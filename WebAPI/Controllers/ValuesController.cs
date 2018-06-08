@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Domain;
 
 namespace WebAPI.Controllers
 {
@@ -11,16 +12,22 @@ namespace WebAPI.Controllers
     {
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Item> Get()
         {
-            return new string[] { "value1", "value2" };
+            var list = new List<Item>();
+            list.Add(new Item() { id = 1, name="Lego1"});
+            list.Add(new Item() { id = 2, name="Lego2"});
+            return list;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Item Get(int id)
         {
-            return "value";
+            var item = new Item();
+            item.id = 1;
+            item.name = "LegoAPI";
+            return item;
         }
 
         // POST api/values

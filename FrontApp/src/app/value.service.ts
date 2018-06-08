@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Item } from './domain/item';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,13 @@ export class ValueService {
   // }
 
   /** GET heroes from the server */
-  getValue (): Observable<string> {
-    const test = this.http.get<string>(this.heroesUrl);
-    return this.http.get<string>(this.heroesUrl);
+  getValue (): Observable<Item[]> {
+    const test = this.http.get<Item[]>(this.heroesUrl);
+    return this.http.get<Item[]>(this.heroesUrl);
+  }
+
+  getItem (): Observable<Item> {
+    return this.http.get<Item>('http://localhost:5000/api/values/1/');
   }
 
 }

@@ -1,6 +1,10 @@
 <p>
   values works!
 </p>
-<p>
-  The value is {{value}}
-</p>
+
+<ul>
+  <li *ngFor="let item of items">
+    <span>ID: </span>{{item.id}}
+    <span>Name: </span>{{item.name}}
+  </li>
+</ul>

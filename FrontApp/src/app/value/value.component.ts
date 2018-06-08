@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ValueService } from '../value.service';
+import { Item } from '../domain/item';
 
 @Component({
   selector: 'app-value',
@@ -7,7 +8,7 @@ import { ValueService } from '../value.service';
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
-  value: string;
+  items: Item[];
   constructor(private valueService: ValueService) { }
 
   ngOnInit() {
@@ -15,7 +16,7 @@ export class ValueComponent implements OnInit {
   }
 
   getValue(): void {
-    this.valueService.getValue().subscribe(value => this.value = value);
+    this.valueService.getValue().subscribe(value => this.items = value);
   }
 
 }

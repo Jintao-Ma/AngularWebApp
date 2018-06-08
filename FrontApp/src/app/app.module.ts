@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ValueComponent
+    ValueComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
