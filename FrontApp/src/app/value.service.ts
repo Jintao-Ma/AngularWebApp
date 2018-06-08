@@ -15,13 +15,13 @@ export class ValueService {
   // }
 
   /** GET heroes from the server */
-  getValue (): Observable<Item[]> {
+  getAll (): Observable<Item[]> {
     const test = this.http.get<Item[]>(this.heroesUrl);
     return this.http.get<Item[]>(this.heroesUrl);
   }
 
   getItem (): Observable<Item> {
-    return this.http.get<Item>('http://localhost:5000/api/values/1/');
+    return this.http.get<Item>('http://localhost:5000/api/values/3/');
   }
 
 }

@@ -16,7 +16,7 @@ export class ValueComponent implements OnInit {
   }
 
   getValue(): void {
-    this.valueService.getValue().subscribe(value => this.items = value);
+    this.valueService.getAll().subscribe(value => this.items = value);
   }
 
 }

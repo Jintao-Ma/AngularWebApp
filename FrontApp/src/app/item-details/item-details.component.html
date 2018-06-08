@@ -1,8 +1,6 @@
-<p>
-  item-details works!
-</p>
-<p>This is item details</p>
+
+<p>This is {{item.name}} details</p>
 <p>
   <span>Id: </span>{{item.id}}</p>
 <p>
-  <span>Name: </span>{{item.name}}</p>
+  <span>Name: </span><input [(ngModel)]="item.name" placeholder="name"></p>
