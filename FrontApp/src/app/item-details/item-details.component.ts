@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../domain/item';
 import {ValueService} from '../value.service';
 
@@ -11,10 +11,10 @@ export class ItemDetailsComponent implements OnInit {
 
   constructor(private valueService: ValueService) { }
 
-  item: Item = { id: 1, name: 'Lego'};
+  @Input() item: Item = { id: 1, name: 'Lego'};
 
   ngOnInit() {
-    this.getItem();
+    //this.getItem();
   }
 
   getItem(): void {
