@@ -7,7 +7,7 @@ import { Item } from './domain/item';
   providedIn: 'root'
 })
 export class ValueService {
-  private heroesUrl = 'http://localhost:5000/api/values/';  // URL to web api
+  private baseUrl = 'http://localhost:5000/api/values/';  // URL to web api
   constructor(private http: HttpClient) { }
 
   // getValue(): string {
@@ -16,12 +16,20 @@ export class ValueService {
 
   /** GET heroes from the server */
   getAll (): Observable<Item[]> {
-    const test = this.http.get<Item[]>(this.heroesUrl);
-    return this.http.get<Item[]>(this.heroesUrl);
+    const test = this.http.get<Item[]>(this.baseUrl);
+    return this.http.get<Item[]>(this.baseUrl);
   }
 
-  getItem (): Observable<Item> {
-    return this.http.get<Item>('http://localhost:5000/api/values/3/');
+  getItem (id: number): Observable<Item> {
+    return this.http.get<Item>(this.baseUrl + id.toString());
+  }
+
+  deleteItem(id: number){
+    return this.http.delete(this.baseUrl + id.toString());
+  }
+
+  updateItem(id: number, item: Item): Observable<Item>{
+    return this.http.put<Item>(this.baseUrl + id.toString(), item);
   }
 
 }

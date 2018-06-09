@@ -44,14 +44,15 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public Item UpdateItem(int id, [FromBody]Item item)
         {
-            item.id = id;
-            return item;
+            itemList.Where(i => i.id == id).First().name = item.name;
+            return itemList.Where(i => i.id == id).First();
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            itemList.RemoveAll(item => item.id == id);
             //do the delete
         }
     }

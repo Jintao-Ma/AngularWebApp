@@ -10,17 +10,13 @@ import { Item } from '../domain/item';
 export class ValueComponent implements OnInit {
   items: Item[];
   constructor(private valueService: ValueService) { }
-  selectedItem: Item;
+  
   ngOnInit() {
     this.getValue();
   }
 
   getValue(): void {
     this.valueService.getAll().subscribe(value => this.items = value);
-  }
-
-  onSelect(item: Item){
-    this.selectedItem = item;
   }
 
 }

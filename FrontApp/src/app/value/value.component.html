@@ -3,10 +3,10 @@
 </p>
 
 <ul>
-  <li *ngFor="let item of items" (click)="onSelect(item)">
-    <span>ID: </span>{{item.id}}
-    <span>Name: </span>{{item.name}}
+  <li *ngFor="let item of items">
+    <a routerLink="/item/{{item.id}}">
+      <span>ID: </span>{{item.id}}
+      <span>Name: </span>{{item.name}}
+    </a>
   </li>
 </ul>
-
-<app-item-details [item]="selectedItem"></app-item-details>
