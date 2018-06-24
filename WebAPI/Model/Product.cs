@@ -1,11 +1,11 @@
-// using MongoDB.Bson;
-// using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace WebAPI.Model
 {
     public class Product
     {
-        /* public ObjectId Id { get; set; }
+        public ObjectId Id { get; set; }
         [BsonElement("ProductId")]
         public int ProductId { get; set; }
         [BsonElement("ProductName")]
@@ -13,6 +13,6 @@ namespace WebAPI.Model
         [BsonElement("Price")]
         public int Price { get; set; }
         [BsonElement("Category")]
-        public string Category { get; set; } */
+        public string Category { get; set; }
     }
 }

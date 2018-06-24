@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Domain;
+using WebAPI.Model;
+using WebAPI.Service;
 
 namespace WebAPI.Controllers
 {
@@ -18,10 +20,23 @@ namespace WebAPI.Controllers
             new Item() { id = 5, name="Lego5"},
             new Item() { id = 6, name="Lego6"}
         };
+
+        DataAccess _dataAccess;
+        public ValuesController(DataAccess dataAccess)
+        {
+            _dataAccess = dataAccess;
+        }
         // GET api/values
         [HttpGet]
         public IEnumerable<Item> GetAll()
         {
+             var productList = _dataAccess.GetProducts();
+             var itemList = new List<Item>();
+             foreach(Product product in productList)
+            {
+                var item = ObjectMapper.ProductToItem(product);
+                itemList.Add(item);
+            }
             return itemList;
         }
 
@@ -29,14 +44,18 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public Item GetItem(int id)
         {
-            return itemList.Where(item => item.id == id).First();
+            var product = _dataAccess.GetProduct(id);
+            if (product != null){
+                return ObjectMapper.ProductToItem(product);
+            }
+            return new Item() { id = 0, name = "Not Found"};
         }
 
         // POST api/values
         [HttpPost]
         public Item AddItem([FromBody]Item item)
         {
-            //do the add item
+            _dataAccess.Create(ObjectMapper.ItemToProduct(item));
             return item;
         }
 
@@ -44,16 +63,15 @@ namespace WebAPI.Controllers
         [HttpPut("{id}")]
         public Item UpdateItem(int id, [FromBody]Item item)
         {
-            itemList.Where(i => i.id == id).First().name = item.name;
-            return itemList.Where(i => i.id == id).First();
+            _dataAccess.Update(ObjectMapper.ItemToProduct(item));
+            return item;
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            itemList.RemoveAll(item => item.id == id);
-            //do the delete
+            _dataAccess.Delete(id);
         }
     }
 }

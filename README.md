@@ -5,3 +5,6 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/?_ga=2.22803574
 
 A simple tutorial on how to use MongoDB (Not necessarily to be in our case):
 http://www.dotnetcurry.com/aspnet-mvc/1267/using-mongodb-nosql-database-with-aspnet-webapi-core
+
+To add mongoDB driver, there is an offical drive we can use add executing this line:
+dotnet add package MongoDB.Driver --version 2.6.1
