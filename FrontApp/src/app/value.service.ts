@@ -24,11 +24,11 @@ export class ValueService {
     return this.http.get<Item>(this.baseUrl + id.toString());
   }
 
-  deleteItem(id: number){
+  deleteItem(id: number) {
     return this.http.delete(this.baseUrl + id.toString());
   }
 
-  updateItem(id: number, item: Item): Observable<Item>{
+  updateItem(id: number, item: Item): Observable<Item> {
     return this.http.put<Item>(this.baseUrl + id.toString(), item);
   }
 

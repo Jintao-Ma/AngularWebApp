@@ -1,0 +1,50 @@
+# Run docker-compose build
+# Run docker-compose up
+# Live long and prosper
+
+version: '3.6'
+
+services:
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    build:
+      context: FrontAPP
+      dockerfile: .docker/nginx.dockerfile
+    volumes:
+      - ./FrontAPP/dist/FrontApp:/usr/share/nginx/html
+    ports:
+      - "4200:80"
+
+    networks:
+      - app-network
+
+  #No authentication is provided here - JUST A DEMO! That would absolutely
+  #be needed for a "real" application
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    environment:
+      # provide your credentials here
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootPass123
+    networks:
+      - app-network
+
+  aspnet:
+    container_name: 'aspnetcoreapp'
+    image: 'aspnetcoreapp'
+    build:
+      context: WebAPI
+      dockerfile: .docker/aspnetcore.development.dockerfile
+    volumes:
+      - ./WebAPI:/var/www/aspnetcoreapp
+    ports:
+     - "5000:5000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
