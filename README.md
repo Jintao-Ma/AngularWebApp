@@ -20,4 +20,9 @@ dotnet add package MongoDB.Driver --version 2.6.1
 
 * Good examples for docker with microservices (There are also many other projects that using docker and angular there): https://github.com/DanWahlin/Angular-NodeJS-MongoDB-CustomersService
 
-* “Containerizing” Angular with Docker - Dan Wahlin: https://www.youtube.com/watch?v=cLT7eUWKZpg
+* “Containerizing” Angular with Docker 
+    - Dan Wahlin: https://www.youtube.com/watch?v=cLT7eUWKZpg
+    - Tutorial found that did similarly to above video (Good to have some step by step explanation): https://medium.com/@tiangolo/angular-in-docker-with-nginx-supporting-environments-built-with-multi-stage-docker-builds-bb9f1724e984
+
+* Docker Documentation about how to containerize a ASP.NET Core application: https://docs.docker.com/engine/examples/dotnetcore/
+ - One thing learned from the process is that Dockerfile should be better at root folder level if just to containerize a single application since you can't specify parent directory within the Dockerfile.

@@ -1,5 +1,5 @@
 # Stage 0, based on Node.js, to build and compile Angular
-FROM node:8.6 as node
+FROM node:8.11.3 as node
 WORKDIR /app
 COPY package.json /app/
 RUN npm install
